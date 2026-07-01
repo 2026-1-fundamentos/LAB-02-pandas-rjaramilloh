@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd                                         #? Importar la librería pandas, que se utiliza para trabajar con datos en formato de tablas (DataFrames)
 
 def pregunta_09():
     """
@@ -23,3 +24,7 @@ def pregunta_09():
     39  39  E   5  1998-01-26  1998
 
     """
+    df_columna_año = pd.read_csv("files/input/tbl0.tsv", delimiter="\t") #? Leer el archivo `tbl0.tsv` y cargarlo en un DataFrame llamado 'df_columna_año'. El parámetro 'delimiter="\t"' indica que los valores están separados por tabulaciones (TSV)
+    df_columna_año["year"] = df_columna_año["c3"].str.slice(0,4)        #? Crear una nueva columna llamada 'year' que extrae los primeros 4 caracteres de la columna 'c3' (que contiene fechas en formato 'YYYY-MM-DD'). Esto extrae el año de cada fecha.
+    
+    return df_columna_año

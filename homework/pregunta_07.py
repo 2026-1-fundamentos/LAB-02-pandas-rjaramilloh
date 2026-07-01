@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd                                         #? Importar la librería pandas, que se utiliza para trabajar con datos en formato de tablas (DataFrames)
 
 def pregunta_07():
     """
@@ -20,3 +21,5 @@ def pregunta_07():
     E    67
     Name: c2, dtype: int64
     """
+    df_sumaC2_por_letraC1_tbl0 = pd.read_csv("files/input/tbl0.tsv", delimiter="\t") #? Leer el archivo `tbl0.tsv` y cargarlo en un DataFrame llamado 'df_sumaC2_por_letraC1_tbl0'. El parámetro 'delimiter="\t"' indica que los valores están separados por tabulaciones (TSV)
+    return df_sumaC2_por_letraC1_tbl0.groupby("c1")["c2"].sum()     #? Agrupar los datos por la columna 'c1' (letras) y calcular la suma de la columna 'c2' para cada grupo. 'groupby("c1")' agrupa los datos por las letras de la columna 'c1', y '.sum()' calcula la suma de los valores de 'c2' para cada letra

@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd                                         #? Importar la librería pandas, que se utiliza para trabajar con datos en formato de tablas (DataFrames)
 
 def pregunta_10():
     """
@@ -20,3 +21,9 @@ def pregunta_10():
     D                   1:2:3:5:5:7
     E   1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
+    df_tablaC1_listaC2 = pd.read_csv("files/input/tbl0.tsv", delimiter="\t")     #? Leer el archivo `tbl0.tsv` y cargarlo en un DataFrame llamado 'df_count_c2'. El parámetro 'delimiter="\t"' indica que los valores están separados por tabulaciones (TSV)
+    return df_tablaC1_listaC2.groupby("c1")[["c2"]].agg(func = lambda s: ":".join(sorted(s.map(str))))  #? Agrupar los datos por la columna 'c1' y para cada grupo de 'c1', aplicar una función que:
+    #?  Toma la columna 'c2'.
+    #?  Convierte los valores de la columna 'c2' a cadenas de texto con 'map(str)'.
+    #?  Ordena los valores de 'c2' de forma ascendente con 'sorted()'.
+    #?  Une los valores ordenados con ':' como separador utilizando ':'.join()

@@ -5,6 +5,7 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd                                         #? Importar la librería pandas, que se utiliza para trabajar con datos en formato de tablas (DataFrames)
 
 def pregunta_05():
     """
@@ -20,3 +21,5 @@ def pregunta_05():
     E    9
     Name: c2, dtype: int64
     """
+    df_maxc2_por_letrac1_tbl10 =  pd.read_csv("files/input/tbl0.tsv", delimiter="\t")   #? Leer el archivo `tbl0.tsv` y cargarlo en un DataFrame llamado 'df_max_c2porc1_tbl0'. El parámetro 'delimiter="\t"' indica que los valores están separados por tabulaciones (TSV)
+    return df_maxc2_por_letrac1_tbl10.groupby("c1")["c2"].max()                         #? Agrupar los datos por la columna 'c1' (letras) y calcular el valor máximo de la columna 'c2' para cada grupo. 'groupby("c1")' agrupa los datos, y '.max()' calcula el valor máximo de 'c2' por cada letra de 'c1'
